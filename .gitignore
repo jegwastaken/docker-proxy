@@ -1,0 +1,14 @@
+# Logs
+*.log*
+
+# Dep dirs
+node_modules/
+vendor/
+
+# IDEs
+.idea/
+.vscode/
+
+# Etcetera
+.env
+certs/
