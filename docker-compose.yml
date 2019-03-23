@@ -7,24 +7,26 @@ services:
     restart: unless-stopped
     ports:
       - '80:80'
+      - '443:443'
     volumes:
-      - ./extras/vhost.default:/etc/nginx/vhost.d/default
-      - ./certs:/etc/nginx/certs:ro
-      - /etc/nginx/vhost.d
-      - /usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs:ro
+      - ./conf.d/proxy-wide.conf:/etc/nginx/conf.d/proxy-wide.conf
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./html:/usr/share/nginx/html
   nginx-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: nginx-letsencrypt
     restart: unless-stopped
     volumes:
-      - ./certs:/etc/nginx/certs:rw
-      - /etc/nginx/vhost.d
-      - /usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./certs:/etc/nginx/certs:rw
+      - ./conf.d/proxy-wide.conf:/etc/nginx/conf.d/proxy-wide.conf
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./html:/usr/share/nginx/html
     environment:
       NGINX_PROXY_CONTAINER: nginx-proxy
-  whoami.local:
+  whoami:
     image: jwilder/whoami
     container_name: whoami
     restart: unless-stopped
