@@ -4,7 +4,7 @@ services:
   nginx-proxy:
     image: jwilder/nginx-proxy:alpine
     container_name: nginx-proxy
-    restart: unless-stopped
+    restart: always
     ports:
       - "80:80"
       - "443:443"
@@ -17,7 +17,7 @@ services:
   nginx-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: nginx-letsencrypt
-    restart: unless-stopped
+    restart: always
     depends_on:
       - nginx-proxy
     volumes:
@@ -31,6 +31,6 @@ services:
   whoami:
     image: jwilder/whoami
     container_name: whoami
-    restart: unless-stopped
+    restart: always
     environment:
       VIRTUAL_HOST: whoami.local
