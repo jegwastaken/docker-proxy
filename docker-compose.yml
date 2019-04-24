@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   nginx-proxy:
-    image: jwilder/nginx-proxy:alpine
+    build: ./build
     container_name: nginx-proxy
     restart: unless-stopped
     ports:
@@ -11,7 +11,6 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./certs:/etc/nginx/certs:ro
-      - ./conf.d/my.conf:/etc/nginx/conf.d/my.conf:ro
       - ./vhost.d:/etc/nginx/vhost.d
       - ./html:/usr/share/nginx/html
   nginx-letsencrypt:
