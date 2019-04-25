@@ -11,5 +11,8 @@ vendor/
 
 # Etcetera
 .env
+
+# Project
 certs/
-vhost.d/
+vhost.d/*
+!vhost.d/default
