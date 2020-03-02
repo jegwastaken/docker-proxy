@@ -27,11 +27,3 @@ services:
     environment:
       NGINX_PROXY_CONTAINER: nginx-proxy
       DEFAULT_EMAIL: thecatcher@outlook.com
-  whoami:
-    image: jwilder/whoami
-    container_name: whoami
-    restart: unless-stopped
-    depends_on:
-      - nginx-proxy
-    environment:
-      VIRTUAL_HOST: whoami.local
