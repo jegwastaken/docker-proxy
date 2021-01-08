@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   nginx-proxy:
-    image: jwilder/nginx-proxy:alpine
+    build: ./build
     container_name: nginx-proxy
     restart: unless-stopped
     ports:
