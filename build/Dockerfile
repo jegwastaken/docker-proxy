@@ -1,3 +1,5 @@
 FROM jwilder/nginx-proxy:alpine
 
-COPY ./custom.conf /etc/nginx/conf.d/
+RUN mkdir /etc/nginx/custom.conf.d/
+
+COPY ./includes.conf /etc/nginx/conf.d/
