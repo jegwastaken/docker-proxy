@@ -14,6 +14,7 @@ vendor/
 
 # Project
 certs/
+subdirs/
 vhost.d/
 custom.conf.d/*
 !custom.conf.d/gzip.conf
