@@ -11,6 +11,7 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./certs:/etc/nginx/certs:ro
+      - ./logs:/var/log/nginx
       - ./custom.conf.d:/etc/nginx/custom.conf.d
       - ./subdirs:/etc/nginx/subdirs
       - ./vhost.d:/etc/nginx/vhost.d
@@ -24,6 +25,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./certs:/etc/nginx/certs:rw
+      - ./logs:/var/log/nginx
       - ./custom.conf.d:/etc/nginx/custom.conf.d
       - ./subdirs:/etc/nginx/subdirs
       - ./vhost.d:/etc/nginx/vhost.d

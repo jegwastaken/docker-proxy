@@ -9,6 +9,7 @@ services:
       - "80:80"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./logs:/var/log/nginx
       - ./custom.conf.d:/etc/nginx/custom.conf.d
       - ./subdirs:/etc/nginx/subdirs
       - ./vhost.d:/etc/nginx/vhost.d
