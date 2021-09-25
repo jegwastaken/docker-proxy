@@ -2,4 +2,20 @@ server {
     listen 80 default_server;
 
     root /usr/share/nginx/html;
+
+    # location /public {
+    #     alias /etc/nginx/subdirs/public;
+    #     autoindex on;
+    # }
+
+    # location /libros {
+    #     proxy_pass http://calibre_web:8083;
+    #     proxy_http_version 1.1;
+    #     proxy_set_header Upgrade $http_upgrade;
+    #     proxy_set_header Connection 'upgrade';
+    #     proxy_set_header X-Forwarded-Proto $scheme;
+    #     proxy_set_header X-Script-Name /libros;
+    #     proxy_set_header Host $host;
+    #     proxy_cache_bypass $http_upgrade;
+    # }
 }
