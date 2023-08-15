@@ -14,6 +14,7 @@ vendor/
 .env
 
 # Project
+.well-known/
 certs/
 subdirs/
 vhost.d/
