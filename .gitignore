@@ -1,5 +1,4 @@
 # Logs
-/logs/
 *.log*
 
 # Dep dirs
@@ -15,9 +14,10 @@ vendor/
 
 # Project
 .well-known/
-certs/
-subdirs/
-vhost.d/
-custom.conf.d/*
-!custom.conf.d/gzip.conf
-!custom.conf.d/server.conf.sample
+**/certs/
+**/logs/
+**/subdirs/
+**/vhost.d/
+**/custom.conf.d/*
+!**/custom.conf.d/gzip.conf
+!**/custom.conf.d/server.conf.sample

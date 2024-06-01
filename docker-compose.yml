@@ -1,8 +1,6 @@
-version: "3.3"
-
 services:
   nginx-proxy:
-    build: ./build
+    image: jwilder/nginx-proxy:alpine
     container_name: nginx-proxy
     restart: unless-stopped
     ports:
@@ -10,12 +8,13 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./certs:/etc/nginx/certs:ro
-      - ./logs:/var/log/nginx
-      - ./custom.conf.d:/etc/nginx/custom.conf.d
-      - ./subdirs:/etc/nginx/subdirs
-      - ./vhost.d:/etc/nginx/vhost.d
-      - ./html:/usr/share/nginx/html
+      - ./nginx/includes.conf:/etc/nginx/conf.d/includes.conf
+      - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/logs:/var/log/nginx
+      - ./nginx/custom.conf.d:/etc/nginx/custom.conf.d
+      - ./nginx/subdirs:/etc/nginx/subdirs
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/html:/usr/share/nginx/html
   nginx-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion:stable
     container_name: nginx-letsencrypt
@@ -24,12 +23,13 @@ services:
       - nginx-proxy
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./certs:/etc/nginx/certs:rw
-      - ./logs:/var/log/nginx
-      - ./custom.conf.d:/etc/nginx/custom.conf.d
-      - ./subdirs:/etc/nginx/subdirs
-      - ./vhost.d:/etc/nginx/vhost.d
-      - ./html:/usr/share/nginx/html
+      - ./nginx/includes.conf:/etc/nginx/conf.d/includes.conf
+      - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/logs:/var/log/nginx
+      - ./nginx/custom.conf.d:/etc/nginx/custom.conf.d
+      - ./nginx/subdirs:/etc/nginx/subdirs
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/html:/usr/share/nginx/html
     environment:
       NGINX_PROXY_CONTAINER: nginx-proxy
       DEFAULT_EMAIL: thecatcher@outlook.com

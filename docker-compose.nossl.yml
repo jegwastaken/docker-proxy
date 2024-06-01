@@ -1,16 +1,16 @@
-version: "3.3"
-
 services:
   nginx-proxy:
-    build: ./build
+    image: jwilder/nginx-proxy:alpine
     container_name: nginx-proxy
     restart: unless-stopped
     ports:
       - "80:80"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./logs:/var/log/nginx
-      - ./custom.conf.d:/etc/nginx/custom.conf.d
-      - ./subdirs:/etc/nginx/subdirs
-      - ./vhost.d:/etc/nginx/vhost.d
-      - ./html:/usr/share/nginx/html
+      - ./nginx/includes.conf:/etc/nginx/conf.d/includes.conf
+      - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/logs:/var/log/nginx
+      - ./nginx/custom.conf.d:/etc/nginx/custom.conf.d
+      - ./nginx/subdirs:/etc/nginx/subdirs
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/html:/usr/share/nginx/html
