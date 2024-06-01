@@ -9,7 +9,7 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx/includes.conf:/etc/nginx/conf.d/includes.conf
-      - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/certs:/etc/nginx/certs
       - ./nginx/logs:/var/log/nginx
       - ./nginx/custom.conf.d:/etc/nginx/custom.conf.d
       - ./nginx/subdirs:/etc/nginx/subdirs
